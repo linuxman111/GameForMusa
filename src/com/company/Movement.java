@@ -3,24 +3,23 @@ package com.company;
 
 public class Movement {
 
-    String[] movingAround = new String[10];
-    String[] encounter = new String[10];
+    static String[] movingAround = new String[10];
+    static String[] encounter = new String[10];
     RandomNumberGenerator rng = new RandomNumberGenerator();
     GetUserInput gui = new GetUserInput();
 
-    public Movement() {
-
-
-        movingAround[0] = "You are walking along the forest 0";
-        movingAround[1] = "You are walking along the forest 1";
-        movingAround[2] = "You are walking along the forest 2";
-        movingAround[3] = "You are walking along the forest 3";
-        movingAround[4] = "You are walking along the forest 4";
-        movingAround[5] = "You are walking along the forest 5";
-        movingAround[6] = "You are walking along the forest 6";
-        movingAround[7] = "You are walking along the forest 7";
-        movingAround[8] = "You are walking along the forest 8";
-        movingAround[9] = "You are walking along the forest 9";
+    static {
+        
+        movingAround[0] = "You are walking along a dark scary forest";
+        movingAround[1] = "walking past a large tree";
+        movingAround[2] = "Following a trail through a small field";
+        movingAround[3] = "Following a river";
+        movingAround[4] = "Taking a nap in the shade";
+        movingAround[5] = "Trying to find something to eat";
+        movingAround[6] = "While looking around for a place to camp for the night";
+        movingAround[7] = "Standing under a tree eating lunch";
+        movingAround[8] = "Whilehunting a while cow";
+        movingAround[9] = "While contently sitting next to a pond trying to catch a fish";
 
 
         encounter[0] = "An evil guy attacks 0";
@@ -33,8 +32,6 @@ public class Movement {
         encounter[7] = "An evil guy attacks 7";
         encounter[8] = "An evil guy attacks 8";
         encounter[9] = "An evil guy attacks 9";
-
-
 
     }
 

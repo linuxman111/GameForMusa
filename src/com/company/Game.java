@@ -10,6 +10,8 @@ public class Game {
     GetUserInput getInput = new GetUserInput();
     Movement moving = new Movement();
 
+    boolean counter1 = false;
+
 
 
     public void start() {
@@ -52,6 +54,7 @@ public class Game {
 
     public void startGame() {
 
+        counter1 = false;
 
         CharacterPlayer player = new CharacterPlayer();
 
@@ -64,21 +67,24 @@ public class Game {
         getInput.saySomethingNoReturn("Your health is: " + player.getHealth());
         getInput.saySomethingNoReturn("Your strength is: " + player.getStrength());
 
-        String answer = getInput.askAQuestion("Are you happy with your character or would you like to reroll? Y or N");
 
-        if (answer.equals("Y")) {
+        //String answer = getInput.askAQuestion("Are you happy with your character or would you like to reroll? Y or N");
 
-            playGame(player);
+        while (counter1 ==  false) {
 
-        } else if (answer.equals("N")) {
+            String answer = getInput.askAQuestion("Are you happy with your character or would you like to reroll? Y or N");
 
-            startGame();
+                if (answer.equals("Y")) {
 
-        } else {
+                    counter1 = true;
+                    playGame(player);
 
-            getInput.saySomethingNoReturn("I didn't understand your answer.  Lets start over");
+                } else if (answer.equals("N")) {
 
-            startGame();
+                    counter1 = true;
+                    startGame();
+
+                }
 
         }
 
@@ -94,28 +100,29 @@ public class Game {
 
     public void playGame(CharacterPlayer player) {
 
+        counter1 = false;
+
         moving.getMoving();
 
         moving.getEncounter();
 
-        String answer = getInput.askAQuestion("Would you like to (R)un or (F)ight?");
+        while (counter1 == false) {
+
+            String answer = getInput.askAQuestion("Would you like to (R)un or (F)ight?");
 
             if (answer.equals("R")) {
 
+                counter1 = true;
                 System.out.println("stuff");
 
             } else if (answer.equals("F")) {
 
+                counter1 = true;
                 System.out.println("more stuff");
-
-            } else {
-
-                getInput.saySomethingNoReturn("I'm starting over.  I don't like your input");
-
-                playGame(player);
 
             }
 
+        }
 
     }
 
