@@ -23,6 +23,10 @@ public class RandomNumberGenerator {
 
             result = randNum.nextInt(9) + 1;
 
+        } else if (x == "enemyObject") {
+
+            result = randNum.nextInt(9) + 1;
+
         }
 
         return result;
