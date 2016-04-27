@@ -5,5 +5,14 @@ package com.company;
  */
 public class CharacterPlayer extends Character {
 
+    int wins = 0;
+
+
+    public int getWins() {
+
+        return this.wins;
+
+    }
+
 
 }

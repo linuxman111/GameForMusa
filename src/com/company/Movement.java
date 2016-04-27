@@ -37,6 +37,12 @@ public class Movement {
 
     }
 
+    public Enemies getEnemy() {
+
+        return enemy[rng.getRandomNumber("movement")];
+
+    }
+
     public void getMoving() {
 
         gui.saySomethingNoReturn(movingAround[rng.getRandomNumber("movement")]);
@@ -45,11 +51,11 @@ public class Movement {
     }
 
 
-    public void getEncounter() {
+    public void getEncounter(Enemies enemy) {
 
         int randomNumber = rng.getRandomNumber("movement");
 
-        gui.saySomethingNoReturn("You come across a " + enemy[randomNumber].monsterType + " with a fierce " + enemy[randomNumber].weapon + " yelling " + enemy[randomNumber].speech);
+        gui.saySomethingNoReturn("You come across a " + enemy.monsterType + " with a fierce " + enemy.weapon + " yelling " + enemy.speech);
 
 
     }

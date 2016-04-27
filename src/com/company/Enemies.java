@@ -1,10 +1,9 @@
 package com.company;
 
 
-public class Enemies {
+public class Enemies extends Character {
 
-        String name, monsterType, weapon, speech;
-        int strength, health;
+        String monsterType, speech;
 
 
         public Enemies() {
@@ -32,17 +31,8 @@ public class Enemies {
 
             }
 
-            strength = rng.getRandomNumber("playerStats");
-
-            health = rng.getRandomNumber("playerStats");
-
 
         }
-
-
-
-
-
 
 
 

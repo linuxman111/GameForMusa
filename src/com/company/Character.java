@@ -5,12 +5,9 @@ public class Character {
 
     RandomNumberGenerator rng = new RandomNumberGenerator();
 
-
-
-    private String name, weapon;
-    private boolean isAlive = true;
-    private int strength, health;
-
+    String name, weapon;
+    boolean isAlive = true;
+    int strength, health;
 
 
 
@@ -21,55 +18,54 @@ public class Character {
 
     }
 
-
-    public void testCharacter() {
-
-        System.out.println(strength + " " + health);
-
-    }
-
-
-
-
     public String getName() {
-        return name;
+
+        return this.name;
+
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String x) {
+
+        name = x;
+
     }
 
     public String getWeapon() {
-        return weapon;
+
+        return this.weapon;
+
     }
 
-    public void setWeapon(String weapon) {
-        this.weapon = weapon;
+    public void setWeapon(String x) {
+
+        weapon = x;
+
     }
 
-    public boolean isAlive() {
-        return isAlive;
+    public boolean getIsAlive() {
+
+        return this.isAlive;
+
     }
 
-    public void setIsAlive(boolean isAlive) {
-        this.isAlive = isAlive;
-    }
+    public void setIsAlive(boolean x) {
 
-    public int getStrength() {
-        return strength;
-    }
+        isAlive = x;
 
-    public void setStrength(int strength) {
-        this.strength = strength;
     }
 
     public int getHealth() {
-        return health;
+
+        return this.health;
+
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public int getStrength() {
+
+        return this.strength;
+
     }
+
 
 
 }

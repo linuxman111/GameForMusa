@@ -1,6 +1,10 @@
 package com.company;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by ArthRu on 4/14/2016.
  */
@@ -9,16 +13,14 @@ public class Game {
 
     GetUserInput getInput = new GetUserInput();
     Movement moving = new Movement();
+    Battle battle = new Battle();
 
-    boolean counter1 = false;
-
+    boolean counter = false;
 
 
     public void start() {
 
-        System.out.println("Starting the game");
-
-        System.out.println("The token is " + RandomNumberGenerator.token);
+        getInput.saySomethingNoReturn("Welcome to the land of Nod, where many fighters come to fight and die");
 
         initialStart();
 
@@ -26,27 +28,31 @@ public class Game {
 
     public void initialStart() {
 
-        String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit");
+        counter = false;
 
-        System.out.println("menuAnswer variable is: " +  menuAnswer);
+        while (counter == false) {
 
-        if (menuAnswer.equals("R")) {
+            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit");
 
-            restoreGame();
+            if (menuAnswer.equals("R")) {
 
-        } else if (menuAnswer.equals("S")) {
+                restoreGame();
 
-            startGame();
+            } else if (menuAnswer.equals("S")) {
 
-        } else if (menuAnswer.equals("Q")) {
+                startGame();
 
-            System.exit(0);
+            } else if (menuAnswer.equals("Q")) {
 
-        } else {
+                System.exit(0);
 
-            getInput.saySomethingNoReturn("I Didn't Understand Your Input");
-            getInput.saySomethingNoReturn("Try Again");
-            initialStart();
+            } else {
+
+                getInput.saySomethingNoReturn("I Didn't Understand Your Input");
+                getInput.saySomethingNoReturn("Try Again");
+                initialStart();
+
+            }
 
         }
 
@@ -54,7 +60,7 @@ public class Game {
 
     public void startGame() {
 
-        counter1 = false;
+        counter = false;
 
         CharacterPlayer player = new CharacterPlayer();
 
@@ -70,18 +76,18 @@ public class Game {
 
         //String answer = getInput.askAQuestion("Are you happy with your character or would you like to reroll? Y or N");
 
-        while (counter1 ==  false) {
+        while (counter ==  false) {
 
             String answer = getInput.askAQuestion("Are you happy with your character or would you like to reroll? Y or N");
 
                 if (answer.equals("Y")) {
 
-                    counter1 = true;
+                    counter = true;
                     playGame(player);
 
                 } else if (answer.equals("N")) {
 
-                    counter1 = true;
+                    counter = true;
                     startGame();
 
                 }
@@ -100,29 +106,71 @@ public class Game {
 
     public void playGame(CharacterPlayer player) {
 
-        counter1 = false;
+        counter = false;
+
+        Enemies enemy = moving.getEnemy();
 
         moving.getMoving();
 
-        moving.getEncounter();
+        moving.getEncounter(enemy);
 
-        while (counter1 == false) {
+        while (counter == false) {
 
             String answer = getInput.askAQuestion("Would you like to (R)un or (F)ight?");
 
             if (answer.equals("R")) {
 
-                counter1 = true;
-                System.out.println("stuff");
+                counter = true;
+
+                getInput.saySomethingNoReturn("You run like a little baby.");
+
+                getInput.saySomethingNoReturn("Your total wins so far are: " + player.getWins());
+
+                playGame(player);
 
             } else if (answer.equals("F")) {
 
-                counter1 = true;
-                System.out.println("more stuff");
+                counter = true;
+
+
+
+                fight(player, enemy);
 
             }
 
         }
+
+    }
+
+
+    public CharacterPlayer fight(CharacterPlayer player, Enemies enemy) {
+
+            boolean isEnemyDead = false;
+
+            HashMap<String, Character> arena = new HashMap<>();
+
+            arena.put("player", player);
+
+            arena.put("enemy", enemy);
+
+
+            while (isEnemyDead == false) {
+
+                battle.prepareToFight(arena);
+
+                battle.fight(arena);
+
+                battle.result(arena);
+
+                if (enemy.isAlive == true) {
+
+
+
+                }
+
+            }
+
+            return player;
 
     }
 
