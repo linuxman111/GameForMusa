@@ -60,6 +60,18 @@ public class Character {
 
     }
 
+    public void setHealthBattle(int x) {
+
+        health = health - x;
+
+        if (health <= 0) {
+
+            setIsAlive(false);
+
+        }
+
+    }
+
     public int getStrength() {
 
         return this.strength;

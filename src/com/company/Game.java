@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class Game {
 
         while (counter == false) {
 
-            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit");
+            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit        (C)reate Spreadsheet");
 
             if (menuAnswer.equals("R")) {
 
@@ -45,6 +46,11 @@ public class Game {
             } else if (menuAnswer.equals("Q")) {
 
                 System.exit(0);
+
+            } else if (menuAnswer.equals("C")) {
+
+                createSpreadsheet();
+
 
             } else {
 
@@ -171,6 +177,24 @@ public class Game {
             }
 
             return player;
+
+    }
+
+
+    public void createSpreadsheet() {
+
+        try {
+
+            ProcessExcel pe = new ProcessExcel();
+
+            pe.createWorkbook("newFile.xls", "newSheet");
+
+        } catch (Exception e) {
+
+            System.out.println("Handling exception");
+
+        }
+
 
     }
 

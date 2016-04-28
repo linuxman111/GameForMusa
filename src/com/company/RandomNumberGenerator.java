@@ -28,6 +28,10 @@ public class RandomNumberGenerator {
 
             result = randNum.nextInt(2);
 
+        } else if (x == "battle") {
+
+            result = randNum.nextInt(9) + 1;
+
         }
 
         return result;

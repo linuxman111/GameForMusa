@@ -36,20 +36,30 @@ public class Battle {
 
         public HashMap<String, Character> fight(HashMap arena) {
 
-            Character player = (CharacterPlayer) arena.get("player");
-            Character enemy = (Enemies) arena.get("enemy");
+            CharacterPlayer player = (CharacterPlayer) arena.get("player");
+            Enemies enemy = (Enemies) arena.get("enemy");
+            int whogoesfirst;
+
 
             //Determine if player or enemy goes first
-            int cointoss = rng.getRandomNumber("flipacoin");
+            //int cointoss = rng.getRandomNumber("flipacoin");
+            int cointoss = 0;
+
             gui.saySomethingNoReturn("Coin toss was " + cointoss);
 
             if (cointoss == 0) {
 
                 gui.saySomethingNoReturn("Player goes first");
 
+                attack(player, enemy, 0);
+
+
+
             } else if (cointoss == 1) {
 
                 gui.saySomethingNoReturn("Your enemy goes first");
+
+                attack(player, enemy, 1);
 
 
             }
@@ -69,6 +79,55 @@ public class Battle {
 
 
             return arena;
+        }
+
+
+        public void attack(CharacterPlayer player, Enemies enemy, int x) {
+
+            int cointoss = x;
+            int hitpoints;
+
+            while ( player.getIsAlive() && enemy.getIsAlive() ) {
+
+                if (cointoss == 0) {
+
+                    //Player hits
+                    hitpoints = rng.getRandomNumber("battle");
+
+                    gui.saySomethingNoReturn(player.getName() + " attacks first."  + player.getName() + " does " + hitpoints + " damage to " + enemy.getName());
+
+                    enemy.setHealthBattle(hitpoints);
+
+                    hitpoints = 0;
+
+
+                    //Enemy hits
+                    hitpoints = rng.getRandomNumber("battle");
+
+                    gui.saySomethingNoReturn(enemy.getName() + " attacks now."  + enemy.getName() + " does " + hitpoints + " damage to " + player.getName());
+
+                    player.setHealthBattle(hitpoints);
+
+                    hitpoints = 0;
+
+
+
+                } else if (cointoss == 1) {
+
+
+
+
+
+
+
+                }
+
+
+
+            }
+
+
+
         }
 
 
