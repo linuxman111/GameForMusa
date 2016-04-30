@@ -1,6 +1,8 @@
 package com.company;
 
 
+import org.apache.poi.ss.usermodel.Row;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -183,17 +185,26 @@ public class Game {
 
     public void createSpreadsheet() {
 
-        try {
 
             ProcessExcel pe = new ProcessExcel();
 
-            pe.createWorkbook("newFile.xls", "newSheet");
 
-        } catch (Exception e) {
+            Map<Integer, String> data = new HashMap<>();
 
-            System.out.println("Handling exception");
+            //data.put("1", new Object[] {"ID", "Name", "LastName"});
+            //data.put("2", new Object[] {"4556", "Art", "Rumrill"});
+            //data.put("3", new Object[] {"4534", "fdadfa", "jadaf"});
+            //data.put("4", new Object[] {"45665365", "yrasf", "klkhs"});
+            //data.put("5", new Object[] {"322433", "ggeser", "nnnmhgrt"});
 
-        }
+            data.put(1, "Art");
+            data.put(2, "Eunice");
+
+            String filename = pe.createWorkbook("newFile.xls", data);
+
+            getInput.saySomethingNoReturn("The file" + filename + " has been created.");
+
+            System.exit(0);
 
 
     }
