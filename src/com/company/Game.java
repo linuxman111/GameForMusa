@@ -199,6 +199,9 @@ public class Game {
 
             data.put(1, "Art");
             data.put(2, "Eunice");
+            data.put(3, "Jinnah");
+            data.put(4, "Hannah");
+            data.put(5, "Musa");
 
             String filename = pe.createWorkbook("newFile.xls", data);
 

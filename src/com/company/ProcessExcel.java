@@ -4,6 +4,8 @@ package com.company;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
@@ -43,9 +45,6 @@ public class ProcessExcel {
 
             }
 
-
-
-
             wb.write(fileOut);
 
             fileOut.close();
@@ -62,20 +61,25 @@ public class ProcessExcel {
 
     }
 
-/*
-    public void writeToWorkbook(Map data) {
+
+    public void readWorkbook() {
+
+        try {
+
+            Workbook wb = WorkbookFactory.create(new File("newFile.xls"));
 
 
-        for (int i = 0; i < data.size(); i++) {
-
-            Row row = sheet.createRow(i);
-
-            Cell cell = row.createCell(3);
-
-            cell.setCellValue("hi");
 
 
-        } */
+
+
+        } catch (Exception e) {
+
+            System.out.println("Caught exception");
+
+        }
+
+        }
 
 
 
