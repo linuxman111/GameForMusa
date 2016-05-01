@@ -207,6 +207,9 @@ public class Game {
 
             getInput.saySomethingNoReturn("The file" + filename + " has been created.");
 
+            //Read the created file
+            pe.readWorkbook();
+
             System.exit(0);
 
 
