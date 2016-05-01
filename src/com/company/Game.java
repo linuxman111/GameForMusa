@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by ArthRu on 4/14/2016.
- */
+
 public class Game {
 
 
@@ -188,6 +186,7 @@ public class Game {
 
             ProcessExcel pe = new ProcessExcel();
 
+            /*
 
             Map<Integer, String> data = new HashMap<>();
 
@@ -207,8 +206,17 @@ public class Game {
 
             getInput.saySomethingNoReturn("The file" + filename + " has been created.");
 
+            */
+
+
             //Read the created file
-            pe.readWorkbook();
+            String[] inputArray = pe.readWorkbook("newFile.xls");
+
+            for (int i = 0; i < inputArray.length; i++) {
+
+                System.out.println("The returned array returned: " + inputArray[i]);
+
+            }
 
             System.exit(0);
 

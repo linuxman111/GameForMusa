@@ -3,14 +3,16 @@ package com.company;
 
 public class Movement {
 
-    private String[] movingAround = new String[10];
+    private String[] movingAround;
     private Enemies[] enemy = new Enemies[10];
     RandomNumberGenerator rng = new RandomNumberGenerator();
     GetUserInput gui = new GetUserInput();
+    ProcessExcel pe = new ProcessExcel();
 
 
     public Movement() {
 
+        /*
         movingAround[0] = "You are walking along a dark scary forest";
         movingAround[1] = "walking past a large tree";
         movingAround[2] = "Following a trail through a small field";
@@ -21,6 +23,9 @@ public class Movement {
         movingAround[7] = "Standing under a tree eating lunch";
         movingAround[8] = "While hunting a wild cow";
         movingAround[9] = "While contently sitting next to a pond trying to catch a fish";
+        */
+
+        movingAround = pe.readWorkbook("newFile.xls");
 
 
         enemy[0] = new Enemies();

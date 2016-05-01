@@ -37,7 +37,9 @@ public class ProcessExcel {
                 Integer key = (Integer) i + 1;
                 String value = (String) data.get(key);
 
+                cell0.setCellType(0);
                 cell0.setCellValue(key);
+
                 cell1.setCellValue(value);
 
             }
@@ -59,24 +61,36 @@ public class ProcessExcel {
     }
 
 
-    public void readWorkbook() {
+    public String[] readWorkbook(String filename) {
+
+        String[] inputArray = null;
 
         try {
 
-            Workbook wb = WorkbookFactory.create(new File("newFile.xls"));
+            Workbook wb = WorkbookFactory.create(new File(filename));
 
             Sheet sheet = wb.getSheet("TestSheet");
 
-            Row row = sheet.getRow(0);
+            int numberOfRows = sheet.getPhysicalNumberOfRows();
 
-            Cell firstCell = row.getCell(0);
+            inputArray = new String[numberOfRows];
 
-            Cell secondCell = row.getCell(1);
+            for (int i = 0; i < numberOfRows; i++) {
 
-            System.out.println(firstCell);
-            System.out.println(secondCell);
+                Row row = sheet.getRow(i);
+
+                Cell getCell = row.getCell(0);
+
+                String cellValue = getCell.getStringCellValue();
+
+                inputArray[i] = cellValue;
+
+
+            }
 
             wb.close();
+
+            return inputArray;
 
 
         } catch (Exception e) {
@@ -84,6 +98,8 @@ public class ProcessExcel {
             System.out.println("Caught exception");
 
         }
+
+        return inputArray;
 
     }
 
