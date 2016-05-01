@@ -69,7 +69,7 @@ public class ProcessExcel {
 
             Workbook wb = WorkbookFactory.create(new File(filename));
 
-            Sheet sheet = wb.getSheet("TestSheet");
+            Sheet sheet = wb.getSheet("sheet");
 
             int numberOfRows = sheet.getPhysicalNumberOfRows();
 
