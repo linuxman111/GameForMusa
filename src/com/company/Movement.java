@@ -12,20 +12,7 @@ public class Movement {
 
     public Movement() {
 
-        /*
-        movingAround[0] = "You are walking along a dark scary forest";
-        movingAround[1] = "walking past a large tree";
-        movingAround[2] = "Following a trail through a small field";
-        movingAround[3] = "Following a river";
-        movingAround[4] = "Taking a nap in the shade";
-        movingAround[5] = "Trying to find something to eat";
-        movingAround[6] = "While looking around for a place to camp for the night";
-        movingAround[7] = "Standing under a tree eating lunch";
-        movingAround[8] = "While hunting a wild cow";
-        movingAround[9] = "While contently sitting next to a pond trying to catch a fish";
-        */
-
-        movingAround = pe.readWorkbook("newFile.xls");
+        movingAround = pe.readWorkbook("movement.xls");
 
 
         enemy[0] = new Enemies();

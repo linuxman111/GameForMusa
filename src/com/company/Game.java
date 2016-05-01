@@ -202,7 +202,7 @@ public class Game {
             data.put(4, "Hannah");
             data.put(5, "Musa");
 
-            String filename = pe.createWorkbook("newFile.xls", data);
+            String filename = pe.createWorkbook("movement.xls", data);
 
             getInput.saySomethingNoReturn("The file" + filename + " has been created.");
 
@@ -210,7 +210,7 @@ public class Game {
 
 
             //Read the created file
-            String[] inputArray = pe.readWorkbook("newFile.xls");
+            String[] inputArray = pe.readWorkbook("movement.xls");
 
             for (int i = 0; i < inputArray.length; i++) {
 
