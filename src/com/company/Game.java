@@ -1,12 +1,7 @@
 package com.company;
 
 
-import org.apache.poi.ss.usermodel.Row;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class Game {
@@ -33,7 +28,7 @@ public class Game {
 
         while (counter == false) {
 
-            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit        (C)reate Spreadsheet");
+            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit");
 
             if (menuAnswer.equals("R")) {
 
@@ -46,11 +41,6 @@ public class Game {
             } else if (menuAnswer.equals("Q")) {
 
                 System.exit(0);
-
-            } else if (menuAnswer.equals("C")) {
-
-                createSpreadsheet();
-
 
             } else {
 
@@ -181,7 +171,7 @@ public class Game {
     }
 
 
-    public void createSpreadsheet() {
+    /* public void createSpreadsheet() {
 
 
             ProcessExcel pe = new ProcessExcel();
@@ -206,7 +196,7 @@ public class Game {
 
             getInput.saySomethingNoReturn("The file" + filename + " has been created.");
 
-            */
+
 
 
             //Read the created file
@@ -221,7 +211,7 @@ public class Game {
             System.exit(0);
 
 
-    }
+    } */
 
 
 }

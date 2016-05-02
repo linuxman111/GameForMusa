@@ -7,7 +7,7 @@ import java.util.Map;
 
 
 
-public class Battle {
+public class Battle implements warfare {
 
         GetUserInput gui = new GetUserInput();
         RandomNumberGenerator rng = new RandomNumberGenerator();

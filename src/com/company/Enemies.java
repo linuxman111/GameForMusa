@@ -1,6 +1,9 @@
 package com.company;
 
 
+import java.util.ArrayList;
+import java.util.ListIterator;
+
 public class Enemies extends Character {
 
         String monsterType, speech;
@@ -25,6 +28,28 @@ public class Enemies extends Character {
 
             //String[] speeches = {"Arggg", "Weee", "Bloggl", "Roar", "Gagagaga", "I will kill you", "Hey", "Aaaaaaaaaa", "Sasasas", "Beboop"};
             String[] speeches = pe.readWorkbook("speech.xls");
+
+            ArrayList<String> notUsedArrayList = new ArrayList<>();
+                notUsedArrayList.add("This");
+                notUsedArrayList.add("Is");
+                notUsedArrayList.add("An");
+                notUsedArrayList.add("Example");
+                notUsedArrayList.add("Of");
+                notUsedArrayList.add("an");
+                notUsedArrayList.add("ArrayList");
+                notUsedArrayList.add("Yaaaa");
+
+            ListIterator iter = notUsedArrayList.listIterator();
+
+            while (iter.hasNext()) {
+
+                Object element = iter.next().toString();
+
+                System.out.println(element);
+
+            }
+
+
 
             if (this.monsterType == "Dragon") {
 

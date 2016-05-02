@@ -25,8 +25,6 @@ public class ProcessExcel {
 
             sheet = wb.createSheet("TestSheet");
 
-            //CreationHelper helper = wb.getCreationHelper();
-
             for (int i = 0; i < data.size(); i++) {
 
                 Row row = sheet.createRow(i);
@@ -34,7 +32,7 @@ public class ProcessExcel {
                 Cell cell0 = row.createCell(0);
                 Cell cell1 = row.createCell(1);
 
-                Integer key = (Integer) i + 1;
+                Integer key = i + 1;
                 String value = (String) data.get(key);
 
                 cell0.setCellType(0);
