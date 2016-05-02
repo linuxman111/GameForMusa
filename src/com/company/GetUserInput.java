@@ -26,9 +26,11 @@ public class GetUserInput {
 
         }
 
-        public void saySomethingNoReturn(String s) {
+        public String saySomethingNoReturn(String s) {
 
             System.out.println(s);
+
+            return s;
 
         }
 
