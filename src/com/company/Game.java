@@ -28,7 +28,7 @@ public class Game {
 
         while (counter == false) {
 
-            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit");
+            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit       (L)oad Driver");
 
             if (menuAnswer.equals("R")) {
 
@@ -37,6 +37,10 @@ public class Game {
             } else if (menuAnswer.equals("S")) {
 
                 startGame();
+
+            } else if (menuAnswer.equals("L")) {
+
+                loadDriver();
 
             } else if (menuAnswer.equals("Q")) {
 
@@ -212,6 +216,16 @@ public class Game {
 
 
     } */
+
+    public void loadDriver() {
+
+        LoadDriver ld = new LoadDriver();
+
+        boolean worked = ld.grabDriver();
+
+        System.out.println("Success grabbing driver was: " + worked);
+
+    }
 
 
 }
