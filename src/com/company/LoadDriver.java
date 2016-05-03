@@ -117,7 +117,37 @@ public class LoadDriver {
 
 
 
+    public boolean addToDB(String name) {
 
+        String sql = "UPDATE runners SET first_name = '" + name + "' WHERE runner_id = 3";
+
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hfjq_race_info?" + "user=root&password=");
+
+            System.out.println("Catalog of DB is: " + conn.getCatalog());
+
+            stmt = conn.createStatement();
+
+            stmt.executeUpdate(sql);
+
+            conn.close();
+
+            return true;
+
+        } catch (Exception ex) {
+
+            System.out.println("Caught exception trying to update the DB");
+
+            ex.printStackTrace();
+
+        }
+
+        return false;
+
+    }
 
 
 

@@ -10,6 +10,7 @@ public class Game {
     GetUserInput getInput = new GetUserInput();
     Movement moving = new Movement();
     Battle battle = new Battle();
+    LoadDriver ld = new LoadDriver();
 
     boolean counter = false;
 
@@ -28,7 +29,7 @@ public class Game {
 
         while (counter == false) {
 
-            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit       (L)oad Driver");
+            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit       (L)oad Driver     (A)dd To DB");
 
             if (menuAnswer.equals("R")) {
 
@@ -45,6 +46,10 @@ public class Game {
             } else if (menuAnswer.equals("Q")) {
 
                 System.exit(0);
+
+            } else if (menuAnswer.equals("A")) {
+
+                addToDB();
 
             } else {
 
@@ -219,11 +224,15 @@ public class Game {
 
     public void loadDriver() {
 
-        LoadDriver ld = new LoadDriver();
-
         boolean worked = ld.grabDriver();
 
         System.out.println("Success grabbing driver was: " + worked);
+
+    }
+
+    public void addToDB() {
+
+        ld.addToDB("Poop");
 
     }
 
