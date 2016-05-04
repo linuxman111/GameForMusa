@@ -62,9 +62,9 @@ public class Character {
 
     public void setHealthBattle(int x) {
 
-        health = health - x;
+        health = this.health - x;
 
-        if (health <= 0) {
+        if (this.health <= 0) {
 
             setIsAlive(false);
 

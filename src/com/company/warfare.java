@@ -12,7 +12,7 @@ public abstract interface warfare {
 
     HashMap result(HashMap arena);
 
-    void attack(CharacterPlayer player, Enemies enemy, int x);
+    String attack(CharacterPlayer player, Enemies enemy, int x);
 
 
 

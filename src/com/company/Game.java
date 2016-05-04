@@ -158,7 +158,7 @@ public class Game {
             arena.put("enemy", enemy);
 
 
-            while (isEnemyDead == false) {
+            while (player.getIsAlive() && enemy.getIsAlive() ) {
 
                 battle.prepareToFight(arena);
 
@@ -166,11 +166,17 @@ public class Game {
 
                 battle.result(arena);
 
-                if (enemy.isAlive == false) {
+            }
 
-                    isEnemyDead = true;
+            if (player.getIsAlive() == false) {
 
-                }
+                System.out.println("You died.  Lets start over");
+
+                startGame();
+
+            } else {
+
+                playGame(player);
 
             }
 
