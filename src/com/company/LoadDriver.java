@@ -19,7 +19,7 @@ public class LoadDriver {
 
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hfjq_race_info?" + "user=root&password=");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/game?" + "user=root&password=");
 
             //System.out.println("Catalog of DB is: " + conn.getCatalog());
 
@@ -115,22 +115,29 @@ public class LoadDriver {
 
 
 
-    public boolean addToDB(String first_name, String last_name, char gender, String finish_time) {
+    public boolean addToDB(String name, String weapon, int health, int strength) {
 
-        int insertID = getNextID() + 1;
-        String insertFName = first_name;
-        String insertLName = last_name;
-        char insertGender = gender;
-        String insertTime = finish_time;
+        int insertID = getNextID();
+
+            if (insertID == -1) {
+
+                System.out.println("getNextID method failed");
+
+            }
+
+        String insertName = name;
+        String insertWeapon = weapon;
+        int insertHealth = health;
+        int insertStrength = strength;
 
         //String sql = "UPDATE runners SET first_name = '" + newName + "' WHERE runner_id = 3";
-        String sql = "insert into runners (runner_id, first_name, last_name, gender, finish_time) values ('" + insertID + "', '" + insertFName + "', '" + insertLName + "', '" + insertGender + "', '" + insertTime + "')";
+        String sql = "insert into player (tokenKey, name, weapon, health, strength) values ('" + insertID + "', '" + insertName + "', '" + insertWeapon + "', '" + insertHealth + "', '" + insertStrength + "')";
 
         try {
 
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hfjq_race_info?" + "user=root&password=");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/game?" + "user=root&password=");
 
             stmt = conn.createStatement();
 
@@ -166,13 +173,13 @@ public class LoadDriver {
 
         int lastID = -1;
 
-        String sql = "SELECT runner_id FROM runners WHERE runner_id=(SELECT MAX(runner_id) FROM runners);";
+        String sql = "SELECT tokenKey FROM player WHERE tokenKey=(SELECT MAX(tokenKey) FROM player);";
 
         try {
 
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hfjq_race_info?" + "user=root&password=");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/game?" + "user=root&password=");
 
             stmt = conn.createStatement();
 
@@ -205,7 +212,7 @@ public class LoadDriver {
 
         }
 
-        return lastID;
+        return lastID + 1;
 
     }
 

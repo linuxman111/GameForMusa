@@ -29,7 +29,7 @@ public class Game {
 
         while (counter == false) {
 
-            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit       (L)oad Driver     (A)dd To DB");
+            String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit       (L)oad Driver     (A)dd To DB Test");
 
             if (menuAnswer.equals("R")) {
 
@@ -49,7 +49,7 @@ public class Game {
 
             } else if (menuAnswer.equals("A")) {
 
-                addToDB();
+                addToDB("TestName", "TestWeapon", 00, 00);
 
             } else {
 
@@ -88,6 +88,7 @@ public class Game {
                 if (answer.equals("Y")) {
 
                     counter = true;
+                    ld.addToDB(player.getName(), player.getWeapon(), player.getHealth(), player.getStrength());
                     playGame(player);
 
                 } else if (answer.equals("N")) {
@@ -137,8 +138,6 @@ public class Game {
 
                 counter = true;
 
-
-
                 fight(player, enemy);
 
             }
@@ -167,9 +166,9 @@ public class Game {
 
                 battle.result(arena);
 
-                if (enemy.isAlive == true) {
+                if (enemy.isAlive == false) {
 
-
+                    isEnemyDead = true;
 
                 }
 
@@ -230,11 +229,11 @@ public class Game {
 
     }
 
-    public void addToDB() {
+    public void addToDB(String name, String weapon, int health, int strength) {
 
         boolean success;
 
-        success = ld.addToDB("super", "duper", 'f', "55:78");
+        success = ld.addToDB(name, weapon, health, strength);
 
         if (success) {
 

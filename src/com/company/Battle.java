@@ -38,28 +38,32 @@ public class Battle implements warfare {
 
             CharacterPlayer player = (CharacterPlayer) arena.get("player");
             Enemies enemy = (Enemies) arena.get("enemy");
-            int whogoesfirst;
+            String whogoesfirst;
 
 
-            //Determine if player or enemy goes first
-            //int cointoss = rng.getRandomNumber("flipacoin");
-            int cointoss = 0;
+            int cointoss = rng.getRandomNumber("flipacoin");
 
-            gui.saySomethingNoReturn("Coin toss was " + cointoss);
+                if (cointoss == 1) {
 
-            if (cointoss == 0) {
+                    whogoesfirst = "player";
 
-                gui.saySomethingNoReturn("Player goes first");
+                } else {
 
-                attack(player, enemy, 0);
+                    whogoesfirst = "enemy";
 
+                }
 
+            gui.saySomethingNoReturn("Coin toss was " + cointoss + ".  " + whogoesfirst + " goes first");
 
-            } else if (cointoss == 1) {
-
-                gui.saySomethingNoReturn("Your enemy goes first");
+            if (whogoesfirst == "player") {
 
                 attack(player, enemy, 1);
+
+
+
+            } else {
+
+                attack(player, enemy, 0);
 
 
             }
@@ -74,12 +78,15 @@ public class Battle implements warfare {
 
 
 
+
+
         public HashMap<String, Character> result(HashMap arena) {
 
-
-
             return arena;
+
         }
+
+
 
 
         public void attack(CharacterPlayer player, Enemies enemy, int x) {
@@ -89,7 +96,7 @@ public class Battle implements warfare {
 
             while ( player.getIsAlive() && enemy.getIsAlive() ) {
 
-                if (cointoss == 0) {
+                if (cointoss == 1) {
 
                     //Player hits
                     hitpoints = rng.getRandomNumber("battle");
@@ -112,12 +119,26 @@ public class Battle implements warfare {
 
 
 
-                } else if (cointoss == 1) {
+                } else {
+
+                    //Enemy hits
+                    hitpoints = rng.getRandomNumber("battle");
+
+                    gui.saySomethingNoReturn(enemy.getName() + " attacks now."  + enemy.getName() + " does " + hitpoints + " damage to " + player.getName());
+
+                    player.setHealthBattle(hitpoints);
+
+                    hitpoints = 0;
 
 
+                    //Player hits
+                    hitpoints = rng.getRandomNumber("battle");
 
+                    gui.saySomethingNoReturn(player.getName() + " attacks first."  + player.getName() + " does " + hitpoints + " damage to " + enemy.getName());
 
+                    enemy.setHealthBattle(hitpoints);
 
+                    hitpoints = 0;
 
 
                 }

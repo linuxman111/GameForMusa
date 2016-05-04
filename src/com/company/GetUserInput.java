@@ -12,7 +12,7 @@ public class GetUserInput {
 
             System.out.println(q);
 
-            String answer = input.next();
+            String answer = input.nextLine();
 
             return answer.toUpperCase();
 
