@@ -41,6 +41,7 @@ public class Enemies extends Character {
 
             ListIterator iter = notUsedArrayList.listIterator();
 
+            /*
             while (iter.hasNext()) {
 
                 Object element = iter.next().toString();
@@ -48,7 +49,7 @@ public class Enemies extends Character {
                 System.out.println(element);
 
             }
-
+            */
 
 
             if (this.monsterType == "Dragon") {

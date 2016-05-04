@@ -232,7 +232,19 @@ public class Game {
 
     public void addToDB() {
 
-        ld.addToDB("Poop");
+        boolean success;
+
+        success = ld.addToDB("super", "duper", 'f', "55:78");
+
+        if (success) {
+
+            System.out.println("Successfull insert");
+
+        } else {
+
+            System.out.println("Unsuccessfull insert");
+
+        }
 
     }
 
