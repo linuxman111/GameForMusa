@@ -11,7 +11,6 @@ public class Game {
     Movement moving = new Movement();
     Battle battle = new Battle();
     LoadDriver ld = new LoadDriver();
-
     boolean counter = false;
 
 
@@ -27,35 +26,39 @@ public class Game {
 
         counter = false;
 
-        while (counter == false) {
+        while (!counter) {
 
             String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit       (L)oad Driver     (A)dd To DB Test");
 
             if (menuAnswer.equals("R")) {
 
+                counter = true;
                 restoreGame();
 
             } else if (menuAnswer.equals("S")) {
 
+                counter = true;
                 startGame();
 
             } else if (menuAnswer.equals("L")) {
 
+                counter = true;
                 loadDriver();
 
             } else if (menuAnswer.equals("Q")) {
 
+                counter = true;
                 System.exit(0);
 
             } else if (menuAnswer.equals("A")) {
 
-                addToDB("TestName", "TestWeapon", 00, 00);
+                counter = true;
+                addToDB("TestName", "TestWeapon", 11, 11);
 
             } else {
 
                 getInput.saySomethingNoReturn("I Didn't Understand Your Input");
                 getInput.saySomethingNoReturn("Try Again");
-                initialStart();
 
             }
 
@@ -78,12 +81,9 @@ public class Game {
         getInput.saySomethingNoReturn("Your health is: " + player.getHealth());
         getInput.saySomethingNoReturn("Your strength is: " + player.getStrength());
 
+        while (!counter) {
 
-        //String answer = getInput.askAQuestion("Are you happy with your character or would you like to reroll? Y or N");
-
-        while (counter ==  false) {
-
-            String answer = getInput.askAQuestion("Are you happy with your character or would you like to reroll? Y or N");
+            String answer = getInput.askAQuestion("Are you happy with your character or would you like to re-roll? (Y) or (N)");
 
                 if (answer.equals("Y")) {
 
@@ -93,8 +93,7 @@ public class Game {
 
                 } else if (answer.equals("N")) {
 
-                    counter = true;
-                    startGame();
+                    counter = false;
 
                 }
 
@@ -105,7 +104,7 @@ public class Game {
 
     public void restoreGame() {
 
-
+        //Restore player serialization here
 
     }
 
@@ -120,19 +119,15 @@ public class Game {
 
         moving.getEncounter(enemy);
 
-        while (counter == false) {
+        while (!counter) {
 
             String answer = getInput.askAQuestion("Would you like to (R)un or (F)ight?");
 
             if (answer.equals("R")) {
 
-                counter = true;
-
                 getInput.saySomethingNoReturn("You run like a little baby.");
 
                 getInput.saySomethingNoReturn("Your total wins so far are: " + player.getWins());
-
-                playGame(player);
 
             } else if (answer.equals("F")) {
 
@@ -168,7 +163,7 @@ public class Game {
 
             }
 
-            if (player.getIsAlive() == false) {
+            if (!player.getIsAlive()) {
 
                 System.out.println("You died.  Lets start over");
 
