@@ -74,6 +74,11 @@ public class Battle implements warfare {
         } else {
 
             System.out.println("Enemy Died");
+            player.setWins(player.getWins() + 1);
+
+            System.out.println(player.getHealth());
+            System.out.println(player.getStrength());
+            System.out.println(player.getWins());
 
         }
 

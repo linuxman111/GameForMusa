@@ -25,10 +25,78 @@ public class Game {
     public void initialStart() {
 
         counter = false;
+        int decision = 100;
 
         while (!counter) {
 
             String menuAnswer = getInput.askAQuestion("(R)estore Game       (S)tart New Game      (Q)uit       (L)oad Driver     (A)dd To DB Test");
+
+            if (menuAnswer.equals("R")) {
+
+                decision = 0;
+
+            } else if (menuAnswer.equals("S")) {
+
+                decision = 1;
+
+            } else if (menuAnswer.equals("Q")) {
+
+                decision = 2;
+
+            } else if (menuAnswer.equals("L")) {
+
+                decision = 3;
+
+            } else if (menuAnswer.equals("A")) {
+
+                decision = 4;
+
+            } else {
+
+                initialStart();
+
+            }
+
+
+
+            switch (decision) {
+
+                case 0:
+
+                    counter = true;
+                    restoreGame();
+                    break;
+
+                case 1:
+
+                    counter = true;
+                    startGame();
+                    break;
+
+                case 2:
+
+                    counter = true;
+                    System.exit(0);
+                    break;
+
+                case 3:
+
+                    counter = true;
+                    loadDriver();
+                    break;
+
+                case 4:
+
+                    counter = true;
+                    addToDB("TestName", "TestWeapon", 11, 11);
+                    break;
+
+
+            }
+
+
+
+            /*
 
             if (menuAnswer.equals("R")) {
 
@@ -60,7 +128,7 @@ public class Game {
                 getInput.saySomethingNoReturn("I Didn't Understand Your Input");
                 getInput.saySomethingNoReturn("Try Again");
 
-            }
+            } */
 
         }
 
@@ -83,7 +151,7 @@ public class Game {
 
         while (!counter) {
 
-            String answer = getInput.askAQuestion("Are you happy with your character or would you like to re-roll? (Y) or (N)");
+            String answer = getInput.askAQuestion("Are you happy with your character? (Y) or (N)");
 
                 if (answer.equals("Y")) {
 
@@ -93,7 +161,7 @@ public class Game {
 
                 } else if (answer.equals("N")) {
 
-                    counter = false;
+                    startGame();
 
                 }
 
@@ -128,6 +196,8 @@ public class Game {
                 getInput.saySomethingNoReturn("You run like a little baby.");
 
                 getInput.saySomethingNoReturn("Your total wins so far are: " + player.getWins());
+
+                playGame(player);
 
             } else if (answer.equals("F")) {
 

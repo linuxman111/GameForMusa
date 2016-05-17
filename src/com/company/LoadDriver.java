@@ -194,7 +194,7 @@ public class LoadDriver {
 
         } catch (Exception ex) {
 
-            ex.printStackTrace();
+            System.out.println("Exception communicating with DB");
 
             return -1;
 
